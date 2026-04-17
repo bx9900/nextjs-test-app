@@ -1,6 +1,9 @@
 import { Suspense } from "react";
 
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 async function Greeting() {
+  await delay(2000);
   const res = await fetch("http://localhost:3000/api/hello", {
     cache: "no-store",
   });
@@ -9,6 +12,7 @@ async function Greeting() {
 }
 
 async function UserList() {
+  await delay(4000);
   const res = await fetch("http://localhost:3000/api/users", {
     cache: "no-store",
   });
