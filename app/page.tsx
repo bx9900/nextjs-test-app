@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { connection } from "next/server";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -8,11 +9,13 @@ const users = [
 ];
 
 async function Greeting() {
+  await connection();
   await delay(2000);
   return <p>API says: Hello from the API!</p>;
 }
 
 async function UserList() {
+  await connection();
   await delay(4000);
   return (
     <ul>
